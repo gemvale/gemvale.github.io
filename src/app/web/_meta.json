@@ -1,0 +1,116 @@
+[
+    {
+        "type": "section-header",
+        "label": "Ammolite"
+    },
+    {
+        "type": "divider"
+    },
+    {
+        "type": "file",
+        "name": "introduction",
+        "label": "Introduction"
+    },
+    {
+        "type": "file",
+        "name": "features",
+        "label": "Features"
+    },
+    {
+        "type": "divider"
+    },
+    {
+        "type": "file",
+        "name": "installation",
+        "label": "Installation"
+    },
+    {
+        "type": "custom-link",
+        "label": "Setup",
+        "collapsed": true,
+        "items": [
+            {
+                "type": "custom-link",
+                "link": "web/setup/webpack",
+                "label": "Webpack"
+            },
+            {
+                "type": "custom-link",
+                "link": "web/setup/rsbuild",
+                "label": "Rsbuild"
+            },
+            {
+                "type": "custom-link",
+                "link": "web/setup/next",
+                "label": "Next.js"
+            },
+            {
+                "type": "custom-link",
+                "link": "web/setup/rollup",
+                "label": "Rollup"
+            },
+            {
+                "type": "custom-link",
+                "link": "web/setup/vite",
+                "label": "Vite"
+            }
+        ]
+    },
+    {
+        "type": "divider"
+    },
+    {
+        "type": "custom-link",
+        "label": "Functions",
+        "collapsed": true,
+        "items": [
+            {
+                "type": "custom-link",
+                "label": "Static",
+                "collapsed": true,
+                "items": [
+                    {
+                        "type": "custom-link",
+                        "label": "variables",
+                        "link": "web/functions/static/variables"
+                    },
+                    {
+                        "type": "custom-link",
+                        "label": "keyframes",
+                        "link": "web/functions/static/keyframes"
+                    },
+                    {
+                        "type": "custom-link",
+                        "label": "style",
+                        "link": "web/functions/static/style"
+                    }
+                ]
+            },
+            {
+                "type": "custom-link",
+                "label": "Dynamic",
+                "collapsed": true,
+                "items": [
+                    {
+                        "type": "custom-link",
+                        "label": "setVariables",
+                        "link": "web/functions/dynamic/set-variables"
+                    },
+                    {
+                        "type": "custom-link",
+                        "label": "merge",
+                        "link": "web/functions/dynamic/merge"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "type": "divider"
+    },
+    {
+        "type": "file",
+        "name": "limitations",
+        "label": "Limitations"
+    }
+]

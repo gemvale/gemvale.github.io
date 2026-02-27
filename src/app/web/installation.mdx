@@ -1,0 +1,53 @@
+import { PackageManagerTabs, OverviewGroup } from "@rspress/core/theme";
+
+# Getting Started
+
+Get started with Ammolite in the project.
+
+## Installation
+
+Install this package as a dev dependency in the project:
+
+<PackageManagerTabs 
+    command={{
+        npm: "npm i ammolite",
+        yarn: "yarn add ammolite",
+        pnpm: "pnpm add ammolite",
+        bun: "bun add ammolite",
+    }} 
+/>
+
+## Setup
+
+There are different ways to setup Ammolite:
+
+<OverviewGroup
+    group={{
+        items: [
+            {
+                text: "Webpack",
+                link: "/web/setup/webpack",
+                items: [
+                    {
+                        text: "Rsbuild",
+                        link: "/web/setup/rsbuild",
+                    },
+                    {
+                        text: "Next.js",
+                        link: "/web/setup/next",
+                    }
+                ],
+            },
+            {
+                text: "Rollup",
+                link: "/web/setup/rollup",
+                items: [
+                    {
+                        text: "Vite",
+                        link: "/web/setup/vite",
+                    },
+                ],
+            },
+        ],
+    }}
+/>

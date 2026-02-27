@@ -1,0 +1,13 @@
+/** biome-ignore-all lint/complexity/noImportantStyles: override */
+
+.rp-tabs__label {
+    flex-wrap: nowrap !important;
+    padding: 8px !important;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+}
+
+.rp-tabs__label__item {
+    flex-shrink: 0 !important;
+    margin-right: 8px !important;
+}

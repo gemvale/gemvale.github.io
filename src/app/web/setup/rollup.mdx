@@ -1,0 +1,34 @@
+import { PackageManagerTabs } from "@rspress/core/theme";
+
+# Rollup
+
+Ammolite can be used with Rollup as a plugin.
+
+## Installation
+
+Install this package as a dev dependency in the project:
+
+<PackageManagerTabs
+    command={{
+        npm: "npm i -D @ammolite/unplugin",
+        yarn: "yarn add -D @ammolite/unplugin",
+        pnpm: "pnpm add -D @ammolite/unplugin",
+        bun: "bun add -D @ammolite/unplugin",
+    }}
+/>
+
+## Configuration
+
+Add the following Rollup configuration:
+
+```js title="rollup.config.js"
+import { defineConfig } from "rollup";
+
+import { ammolite } from "@ammolite/unplugin/rollup";
+
+export default defineConfig({
+    plugins: [
+        ammolite(),
+    ],
+});
+```

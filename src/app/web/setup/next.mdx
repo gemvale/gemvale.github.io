@@ -1,0 +1,205 @@
+import { PackageManagerTabs, Tabs, Tab } from "@rspress/core/theme";
+
+# Next.js
+
+Ammolite can be used with Next.js as a plugin.
+
+## Installation
+
+Install these packages as dev dependencies in the project:
+
+<PackageManagerTabs
+    command={{
+        npm: "npm i -D @ammolite/next @ammolite/postcss",
+        yarn: "yarn add -D @ammolite/next @ammolite/postcss",
+        pnpm: "pnpm add -D @ammolite/next @ammolite/postcss",
+        bun: "bun add -D @ammolite/next @ammolite/postcss",
+    }}
+/>
+
+## Configuration
+
+Add the following Next.js configuration:
+
+<Tabs>
+
+<Tab label="JavaScript(CJS)">
+```ts title="next.config.js"
+const { ammolite } = require("@ammolite/next");
+
+/* @type {import("next").NextConfig} */
+let config: NextConfig = {
+    /* ... */
+};
+
+const withAmmolite = ammolite();
+
+config = withAmmolite(config);
+
+module.exports = config;
+```
+</Tab>
+
+<Tab label="JavaScript(ESM)">
+```ts title="next.config.mjs"
+import { ammolite } from "@ammolite/next";
+
+/* @type {import("next").NextConfig} */
+let config: NextConfig = {
+    /* ... */
+};
+
+const withAmmolite = ammolite();
+
+config = withAmmolite(config);
+
+export default config;
+```
+</Tab>
+
+<Tab label="TypeScript">
+```ts title="next.config.ts"
+import type { NextConfig } from "next";
+
+import { ammolite } from "@ammolite/next";
+
+type Plugin = (config?: NextConfig) => NextConfig;
+
+let config: NextConfig = {
+    /* ... */
+};
+
+const withAmmolite: Plugin = ammolite();
+
+config = withAmmolite(config);
+
+export default config;
+```
+</Tab>
+
+</Tabs>
+
+And add the following PostCSS configuration:
+
+<Tabs>
+
+<Tab label="CommonJS">
+```js title="postcss.config.js"
+/** @type {import("postcss-load-config").Config} */
+module.exports = {
+    plugins: [
+        "@ammolite/postcss",
+    ],
+};
+```
+</Tab>
+
+<Tab label="ESModule">
+```js title="postcss.config.mjs"
+/** @type {import("postcss-load-config").Config} */
+export default {
+    plugins: [
+        "@ammolite/postcss",
+    ],
+};
+```
+</Tab>
+
+</Tabs>
+
+Or follow Next.js configuration:
+
+<PackageManagerTabs
+    command={{
+        npm: "npm i -D postcss-preset-env postcss-flexbugs-fixes",
+        yarn: "yarn add -D postcss-preset-env postcss-flexbugs-fixes",
+        pnpm: "pnpm add -D postcss-preset-env postcss-flexbugs-fixes",
+        bun: "bun add -D postcss-preset-env postcss-flexbugs-fixes",
+    }}
+/>
+
+<Tabs>
+
+<Tab label="CommonJS">
+```js title="postcss.config.js"
+/** @type {import("postcss-preset-env").pluginOptions} */
+const presetEnvOptions = {
+    autoprefixer: {
+        flexbox: "no-2009",
+    },
+    stage: 3,
+    features: {
+        "custom-properties": false,
+    }
+};
+
+/** @type {import("postcss-load-config").Config} */
+module.exports = {
+    plugins: [
+        [
+            "postcss-preset-env", 
+            presetEnvOptions,
+        ],
+        "postcss-flexbugs-fixes",
+        "@ammolite/postcss",
+    ],
+};
+```
+</Tab>
+
+<Tab label="ESModule">
+```js title="postcss.config.mjs"
+/** @type {import("postcss-preset-env").pluginOptions} */
+const presetEnvOptions = {
+    autoprefixer: {
+        flexbox: "no-2009",
+    },
+    stage: 3,
+    features: {
+        "custom-properties": false,
+    }
+};
+
+/** @type {import("postcss-load-config").Config} */
+export default {
+    plugins: [
+        [
+            "postcss-preset-env", 
+            presetEnvOptions,
+        ],
+        "postcss-flexbugs-fixes",
+        "@ammolite/postcss",
+    ],
+};
+```
+</Tab>
+
+</Tabs>
+
+In case there are no any CSS file, create one and import it:
+
+<Tabs>
+
+<Tab label="JavaScript">
+```jsx title="src/app/layout.jsx"
+import "index.css";
+
+export default () => {
+    // ...
+}
+```
+</Tab>
+
+<Tab label="TypeScript">
+```tsx title="src/app/layout.tsx"
+import type * as React from "react";
+
+import "index.css";
+
+export default (): React.JSX.Element => {
+    // ...
+}
+```
+</Tab>
+
+</Tabs>

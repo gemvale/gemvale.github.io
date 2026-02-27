@@ -1,0 +1,69 @@
+/* Light Mode */
+:where(html:not(.rp-dark)) {
+    --rp-c-brand-dark: #2a7f98;
+    --rp-home-hero-secondary-color: #d9a91a;
+
+    /* HomeHero */
+    --rp-home-hero-title-color: transparent;
+    --rp-home-hero-title-bg: linear-gradient(
+        90deg,
+        #2f8ca8 0% /* teal */,
+        #45a3d6 30% /* sky */,
+        #7fb069 60% /* muted lime */,
+        #e3b11c 100% /* gold */
+    );
+
+    /* HomeBackground */
+    --rp-home-background-bg:
+        radial-gradient(
+            55% 70% at 100% 0%,
+            rgba(69, 163, 214, 0.22) 0%,
+            rgba(255, 255, 255, 0) 100%
+        ),
+        radial-gradient(
+            65% 85% at 50% 0%,
+            rgba(227, 177, 28, 0.18) 0%,
+            rgba(255, 255, 255, 0) 100%
+        ),
+        radial-gradient(
+            90% 75% at 0% 10%,
+            rgba(127, 176, 105, 0.14) 0%,
+            rgba(255, 255, 255, 0) 100%
+        ),
+        #ffffff;
+}
+
+/* Dark Mode */
+:where(html.rp-dark) {
+    --rp-c-brand-dark: #2a7f98;
+    --rp-home-hero-secondary-color: #d9a91a;
+
+    /* HomeHero */
+    --rp-home-hero-title-color: transparent;
+    --rp-home-hero-title-bg: linear-gradient(
+        90deg,
+        #4fb4d3 0% /* brighter sky */,
+        #2f8ca8 35% /* teal */,
+        #7fb069 65% /* lime depth */,
+        #e3b11c 100% /* gold highlight */
+    );
+
+    /* HomeBackground */
+    --rp-home-background-bg:
+        radial-gradient(
+            60% 75% at 100% 0%,
+            rgba(69, 163, 214, 0.35) 0%,
+            rgba(18, 18, 18, 0) 100%
+        ),
+        radial-gradient(
+            75% 95% at 50% 0%,
+            rgba(227, 177, 28, 0.25) 0%,
+            rgba(18, 18, 18, 0) 100%
+        ),
+        radial-gradient(
+            120% 90% at 0% 0%,
+            rgba(60, 40, 90, 0.3) 0%,
+            rgba(18, 18, 18, 0) 100%
+        ),
+        #121212;
+}

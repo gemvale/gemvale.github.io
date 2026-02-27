@@ -1,0 +1,155 @@
+import { PackageManagerTabs } from "@rspress/core/theme";
+
+# Webpack
+
+Ammolite can be used with Webpack as a plugin.
+
+## Installation
+
+Install this package as a dev dependency in the project:
+
+<PackageManagerTabs 
+    command={{
+        npm: "npm i -D @ammolite/unplugin",
+        yarn: "yarn add -D @ammolite/unplugin",
+        pnpm: "pnpm add -D @ammolite/unplugin",
+        bun: "bun add -D @ammolite/unplugin",
+    }} 
+/>
+
+## Configuration
+
+Add the following webpack configuration:
+
+```js title="webpack.config.js"
+const { AmmolitePlugin } = require("@ammolite/unplugin/webpack");
+
+module.exports = {
+    plugins: [
+        new AmmolitePlugin(),
+    ],
+};
+```
+
+For linking stylesheet into HTML, use `html-webpack-plugin`:
+
+<PackageManagerTabs 
+    command={{
+        npm: "npm i -D html-webpack-plugin",
+        yarn: "yarn add -D html-webpack-plugin",
+        pnpm: "pnpm add -D html-webpack-plugin",
+        bun: "bun add -D html-webpack-plugin",
+    }} 
+/>
+
+
+```js title="webpack.config.js"
+const { AmmolitePlugin } = require("@ammolite/unplugin/webpack");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+
+module.exports = {
+    plugins: [
+        new AmmolitePlugin(),
+        new HtmlWebpackPlugin(),
+    ],
+};
+```
+
+## PostCSS Configuration
+
+Ammolite also supports PostCSS with the `@ammolite/postcss` package.
+
+Install these packages as dev dependencies in the project:
+
+<PackageManagerTabs 
+    command={{
+        npm: "npm i -D @ammolite/postcss css-loader postcss postcss-loader",
+        yarn: "yarn add -D @ammolite/postcss css-loader postcss postcss-loader",
+        pnpm: "pnpm add -D @ammolite/postcss css-loader postcss postcss-loader",
+        bun: "bun add -D @ammolite/postcss css-loader postcss postcss-loader",
+    }} 
+/>
+
+Add the following webpack configuration:
+
+```js title="webpack.config.js"
+const { AmmolitePlugin } = require("@ammolite/unplugin/webpack");
+
+module.exports = {
+    module: {
+        rules: [
+            {
+                test: /\.css$/,
+                use: [
+                    "css-loader",
+                    "postcss-loader",
+                ],
+            },
+        ],
+    },
+    plugins: [
+        new AmmolitePlugin({
+            emit: false,
+        }),
+    ],
+};
+```
+
+For integration with `html-webpack-plugin`:
+
+<PackageManagerTabs 
+    command={{
+        npm: "npm i -D mini-css-extract-plugin",
+        yarn: "yarn add -D mini-css-extract-plugin",
+        pnpm: "pnpm add -D mini-css-extract-plugin",
+        bun: "bun add -D mini-css-extract-plugin",
+    }} 
+/>
+
+```js title="webpack.config.js"
+const { AmmolitePlugin } = require("@ammolite/unplugin/webpack");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+
+module.exports = {
+    module: {
+        rules: [
+            {
+                test: /\.css$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    "css-loader",
+                    "postcss-loader",
+                ],
+            },
+        ],
+    },
+    plugins: [
+        new AmmolitePlugin({
+            emit: false,
+        }),
+        new MiniCssExtractPlugin(),
+        new HtmlWebpackPlugin(),
+    ],
+};
+```
+
+Add the following PostCSS configuration:
+
+```js title="postcss.config.js"
+const ammolite = require("@ammolite/postcss");
+
+module.exports = {
+    plugins: [
+        ammolite(),
+    ],
+};
+```
+
+In case there are no any CSS file, create one and import it:
+
+```js title="./src/index.js"
+import "index.css"
+
+// ...
+```

@@ -1,0 +1,34 @@
+import { PackageManagerTabs } from "@rspress/core/theme";
+
+# Rsbuild
+
+Ammolite can be used with Rsbuild as a plugin.
+
+## Installation
+
+Install this package as a dev dependency in the project:
+
+<PackageManagerTabs
+    command={{
+        npm: "npm i -D @ammolite/rsbuild",
+        yarn: "yarn add -D @ammolite/rsbuild",
+        pnpm: "pnpm add -D @ammolite/rsbuild",
+        bun: "bun add -D @ammolite/rsbuild",
+    }}
+/>
+
+## Configuration
+
+Add the following code:
+
+```ts title="rsbuild.config.ts"
+import { defineConfig } from "@rsbuild/core";
+
+import { pluginAmmolite } from "@ammolite/rsbuild";
+
+export default defineConfig({
+    plugins: [
+        pluginAmmolite(),
+    ],
+});
+```

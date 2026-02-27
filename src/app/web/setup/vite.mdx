@@ -1,0 +1,82 @@
+import { PackageManagerTabs } from "@rspress/core/theme";
+
+# Vite
+
+Ammolite can be used with Vite as a plugin.
+
+## Installation
+
+Install this package as a dev dependency in the project:
+
+<PackageManagerTabs
+    command={{
+        npm: "npm i -D @ammolite/unplugin",
+        yarn: "yarn add -D @ammolite/unplugin",
+        pnpm: "pnpm add -D @ammolite/unplugin",
+        bun: "bun add -D @ammolite/unplugin",
+    }}
+/>
+
+## Configuration
+
+Add the following Vite configuration:
+
+```js title="vite.config.js"
+import { defineConfig } from "vite";
+
+import { ammolite } from "@ammolite/unplugin/vite";
+
+export default defineConfig({
+    plugins: [
+        ammolite(),
+    ],
+});
+```
+
+## PostCSS Configuration
+
+Ammolite also supports PostCSS with the `@ammolite/postcss` package.
+
+Install this package as a dev dependency in the project:
+
+<PackageManagerTabs
+    command={{
+        npm: "npm i -D @ammolite/postcss",
+        yarn: "yarn add -D @ammolite/postcss",
+        pnpm: "pnpm add -D @ammolite/postcss",
+        bun: "bun add -D @ammolite/postcss",
+    }}
+/>
+
+Add the following Vite configuration:
+
+```js title="vite.config.js"
+import { defineConfig } from "vite";
+
+import { ammolite } from "@ammolite/unplugin/vite";
+
+import ammolitePostCSS from "@ammolite/postcss";
+
+export default defineConfig({
+    plugins: [
+        ammolite({
+            emit: false,
+        }),
+    ],
+    css: {
+        postcss: {
+            plugins: [
+                ammolitePostCSS(),
+            ],
+        },
+    },
+});
+```
+
+In case there are no any CSS file, create one and import it:
+
+```js title="./src/index.js"
+import "index.css";
+
+// ...
+```
