@@ -11,3 +11,13 @@
     flex-shrink: 0 !important;
     margin-right: 8px !important;
 }
+
+.rp-search-panel__modal {
+    background-color: var(--rp-c-bg) !important;
+}
+
+@media (max-width: 960px) {
+    .rp-search-panel__modal {
+        border-radius: 0 0 var(--rp-radius) var(--rp-radius) !important;
+    }
+}
