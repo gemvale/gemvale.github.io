@@ -22,6 +22,9 @@ export default defineConfig({
                 content: "https://github.com/gemvale",
             },
         ],
+        footer: {
+            message: `Copyright © ${new Date().getFullYear()}, Alpheus`,
+        },
         llmsUI: true,
     },
     plugins: [
