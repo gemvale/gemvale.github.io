@@ -1,7 +1,12 @@
 [
     {
-        "text": "Docs",
+        "text": "Web",
         "link": "/web/introduction",
         "activeMatch": "/web/"
+    },
+    {
+        "text": "Lynx",
+        "link": "/lynx/introduction",
+        "activeMatch": "/lynx/"
     }
 ]

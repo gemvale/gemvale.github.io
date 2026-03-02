@@ -1,0 +1,134 @@
+import { Tabs, Tab } from "@rspress/core/theme";
+
+# Introduction
+
+Lyngurium is a transplant of Ammolite that built for Lynx.
+
+## Type Safety
+
+With Lyngurium, it is possible to create Lynx styles with type safety.
+
+```tsx
+import type * as React from "@lynxjs/react";
+
+import { style } from "lyngurium";
+
+const StyledButton = (): React.JSX.Element => {
+    return <view className={button} />;
+};
+
+// style declaration
+const button: string = style({
+    display: "flex",
+});
+```
+
+## Runtime Overhead
+
+In the final result, all static functions will be trasnformed, no computation will be required in the runtime.
+
+<Tabs>
+
+<Tab label="Input">
+```tsx title="index.tsx"
+import type * as React from "@lynxjs/react";
+
+import { style } from "lyngurium";
+
+const StyledButton = (): React.JSX.Element => {
+    return <view className={button} />;
+};
+
+// style declaration
+const button: string = style({
+    display: "flex",
+});
+```
+</Tab>
+
+<Tab label="Output(JS)">
+```js title="index.js"
+import { jsx } from "@lynxjs/react/jsx-runtime";
+
+const StyledButton = () => {
+    return jsx("view", {
+        className: button,
+    });
+};
+
+// final class name
+const button = "djcd1agm";
+```
+</Tab>
+
+<Tab label="Output (CSS)">
+```css title="index.css"
+/* declare once, use anywhere */
+.djcd1agm {
+    display: flex;
+}
+```
+</Tab>
+
+</Tabs>
+
+## Scalability
+
+Like Ammolite, Lyngurium is designed for scale while preserving type safety and runtime performance.
+
+In the final result, all the declarations will be reused after their initial declaration.
+
+<Tabs>
+
+<Tab label="Input">
+```tsx title="index.tsx"
+import type * as React from "@lynxjs/react";
+
+import { style } from "lyngurium";
+
+const StyledButton = (): React.JSX.Element => {
+    return <view className={button} />;
+};
+
+const StyledButton2 = (): React.JSX.Element => {
+    return <view className={button2} />;
+}
+
+// style declaration
+const button: string = style({
+    display: "flex",
+});
+
+const button2: string = style({
+    display: "flex",
+});
+```
+</Tab>
+
+<Tab label="Output(JS)">
+```js title="index.js"
+const StyledButton = () => {
+    return <view className={button} />
+};
+
+const StyledButton2 = () => {
+    return <view className={button2} />
+}
+
+// final class name
+const button = "djcd1agm";
+
+const button2 = "djcd1agm";
+```
+</Tab>
+
+<Tab label="Output (CSS)">
+```css title="index.css"
+/* declare once, use anywhere */
+.djcd1agm {
+    display: flex; /** reused */
+}
+```
+</Tab>
+
+</Tabs>

@@ -1,0 +1,30 @@
+[
+    {
+        "type": "section-header",
+        "label": "Lyngurium"
+    },
+    {
+        "type": "divider"
+    },
+    {
+        "type": "file",
+        "name": "introduction",
+        "label": "Introduction"
+    },
+    {
+        "type": "divider"
+    },
+    {
+        "type": "file",
+        "name": "installation",
+        "label": "Installation"
+    },
+    {
+        "type": "divider"
+    },
+    {
+        "type": "file",
+        "name": "limitations",
+        "label": "Limitations"
+    }
+]

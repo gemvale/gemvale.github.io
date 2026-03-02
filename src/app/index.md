@@ -10,8 +10,8 @@ hero:
           text: Quick Start
           link: /web/installation
         - theme: alt
-          text: GitHub
-          link: https://github.com/gemvale
+          text: Lynx
+          link: /lynx/installation
     image:
         src: /icon.png
         alt: Logo

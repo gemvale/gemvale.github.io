@@ -1,0 +1,59 @@
+import { PackageManagerTabs, OverviewGroup } from "@rspress/core/theme";
+
+# Getting Started
+
+Get started with Lyngurium in the project.
+
+## Installation
+
+Install this package as a dependency in the project:
+
+<PackageManagerTabs 
+    command={{
+        npm: "npm i lyngurium",
+        yarn: "yarn add lyngurium",
+        pnpm: "pnpm add lyngurium",
+        bun: "bun add lyngurium",
+    }}
+/>
+
+And install these packages as dev dependencies in the project:
+
+<PackageManagerTabs 
+    command={{
+        npm: "npm i -D @lyngurium/rsbuild @lyngurium/postcss",
+        yarn: "yarn add -D @lyngurium/rsbuild @lyngurium/postcss",
+        pnpm: "pnpm add -D @lyngurium/rsbuild @lyngurium/postcss",
+        bun: "bun add -D @lyngurium/rsbuild @lyngurium/postcss",
+    }}
+/>
+
+## Configuration
+
+Add the following configuration:
+
+```ts title="lynx.config.ts"
+import { defineConfig } from "@rsbuild/core";
+
+import { pluginLyngurium } from "@lyngurium/rsbuild";
+
+export default defineConfig({
+    plugins: [
+        pluginLyngurium(),
+    ],
+});
+```
+
+And add the following PostCSS configuration:
+
+```js title="postcss.config.js"
+/** @type {import("@lyngurium/postcss").PluginOptions} */
+const lynguriumConfig = {};
+
+/** @type {import("postcss-load-config").Config} */
+export default {
+    plugins: {
+        "@lyngurium/postcss": lynguriumConfig,
+    },
+};
+```
