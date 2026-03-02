@@ -24,7 +24,7 @@ tsc:
 
 # Lint code
 lint:
-    ls-lint -config ./.ls-lint.yaml
+    cd ./src && ls-lint -config ../.ls-lint.yaml
     typos
     just tsc
 
