@@ -32,3 +32,49 @@ export default defineConfig({
     ],
 });
 ```
+
+## PostCSS Configuration
+
+Ammolite also supports PostCSS with the `@ammolite/postcss` package.
+
+Install this package as a dev dependency in the project:
+
+<PackageManagerTabs
+    command={{
+        npm: "npm i -D @ammolite/postcss",
+        yarn: "yarn add -D @ammolite/postcss",
+        pnpm: "pnpm add -D @ammolite/postcss",
+        bun: "bun add -D @ammolite/postcss",
+    }}
+/>
+
+Add the following Rsbuild configuration:
+
+```ts title="rsbuild.config.ts"
+import type { PostCSSLoaderOptions } from "@rsbuild/core";
+
+import { defineConfig } from "@rsbuild/core";
+
+import { pluginAmmolite } from "@ammolite/rsbuild";
+
+export default defineConfig({
+    plugins: [
+        pluginAmmolite({
+            emit: false,
+        }),
+    ],
+    tools: {
+        postcss: (_: PostCSSLoaderOptions, { addPlugins }): void => {
+            addPlugins(require("@ammolite/postcss"));
+        },
+    },
+});
+```
+
+In case there are no any CSS file, create one and import it:
+
+```ts title="./src/index.ts"
+import "index.css";
+
+// ...
+```
