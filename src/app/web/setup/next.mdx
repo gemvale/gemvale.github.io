@@ -4,6 +4,8 @@ import { PackageManagerTabs, Tabs, Tab } from "@rspress/core/theme";
 
 Ammolite can be used with Next.js as a plugin.
 
+Currently support both Webpack and Turbopack implementation.
+
 ## Installation
 
 Install these packages as dev dependencies in the project:
@@ -25,7 +27,7 @@ Add the following Next.js configuration:
 
 <Tab label="JavaScript(CJS)">
 ```ts title="next.config.js"
-const { ammolite } = require("@ammolite/next");
+const { ammolite } = require("@ammolite/next/webpack");
 
 /* @type {import("next").NextConfig} */
 let config: NextConfig = {
@@ -42,7 +44,7 @@ module.exports = config;
 
 <Tab label="JavaScript(ESM)">
 ```ts title="next.config.mjs"
-import { ammolite } from "@ammolite/next";
+import { ammolite } from "@ammolite/next/webpack";
 
 /* @type {import("next").NextConfig} */
 let config: NextConfig = {
@@ -61,7 +63,7 @@ export default config;
 ```ts title="next.config.ts"
 import type { NextConfig } from "next";
 
-import { ammolite } from "@ammolite/next";
+import { ammolite } from "@ammolite/next/turbopack";
 
 type Plugin = (config?: NextConfig) => NextConfig;
 
@@ -85,10 +87,16 @@ And add the following PostCSS configuration:
 
 <Tab label="CommonJS">
 ```js title="postcss.config.js"
+/** @type {import("@ammolite/postcss").PluginOptions} */
+const ammoliteOptions = {};
+
 /** @type {import("postcss-load-config").Config} */
 module.exports = {
     plugins: [
-        "@ammolite/postcss",
+        [
+            "@ammolite/postcss",
+            ammoliteOptions,
+        ],
     ],
 };
 ```
@@ -96,10 +104,16 @@ module.exports = {
 
 <Tab label="ESModule">
 ```js title="postcss.config.mjs"
+/** @type {import("@ammolite/postcss").PluginOptions} */
+const ammoliteOptions = {};
+
 /** @type {import("postcss-load-config").Config} */
 export default {
     plugins: [
-        "@ammolite/postcss",
+        [
+            "@ammolite/postcss",
+            ammoliteOptions,
+        ],
     ],
 };
 ```
@@ -133,6 +147,9 @@ const presetEnvOptions = {
     }
 };
 
+/** @type {import("@ammolite/postcss").PluginOptions} */
+const ammoliteOptions = {};
+
 /** @type {import("postcss-load-config").Config} */
 module.exports = {
     plugins: [
@@ -141,7 +158,10 @@ module.exports = {
             presetEnvOptions,
         ],
         "postcss-flexbugs-fixes",
-        "@ammolite/postcss",
+        [
+            "@ammolite/postcss",
+            ammoliteOptions,
+        ],
     ],
 };
 ```
@@ -160,6 +180,9 @@ const presetEnvOptions = {
     }
 };
 
+/** @type {import("@ammolite/postcss").PluginOptions} */
+const ammoliteOptions = {};
+
 /** @type {import("postcss-load-config").Config} */
 export default {
     plugins: [
@@ -168,7 +191,10 @@ export default {
             presetEnvOptions,
         ],
         "postcss-flexbugs-fixes",
-        "@ammolite/postcss",
+        [
+            "@ammolite/postcss",
+            ammoliteOptions,
+        ],
     ],
 };
 ```
