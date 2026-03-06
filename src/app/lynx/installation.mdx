@@ -8,7 +8,7 @@ Get started with Lyngurium in the project.
 
 Install this package as a dependency in the project:
 
-<PackageManagerTabs 
+<PackageManagerTabs
     command={{
         npm: "npm i lyngurium",
         yarn: "yarn add lyngurium",
@@ -19,7 +19,7 @@ Install this package as a dependency in the project:
 
 And install these packages as dev dependencies in the project:
 
-<PackageManagerTabs 
+<PackageManagerTabs
     command={{
         npm: "npm i -D @lyngurium/rsbuild @lyngurium/postcss",
         yarn: "yarn add -D @lyngurium/rsbuild @lyngurium/postcss",
@@ -56,4 +56,12 @@ export default {
         "@lyngurium/postcss": lynguriumConfig,
     },
 };
+```
+
+In case there are no any CSS file, create one and import it:
+
+```ts title="./src/index.tsx"
+import "index.css";
+
+// ...
 ```
